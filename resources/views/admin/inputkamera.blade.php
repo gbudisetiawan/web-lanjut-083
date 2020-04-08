@@ -398,38 +398,7 @@
                     <br>
                     <div class="col-lg-12">
 
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Tabel Kamera</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <a href="{{route('kamera.create')}}">Tambah Data</a>
-                                    <table class="table table-bordered" id="dataTable">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Nama Kamera</th>
-                                                <th>Seri Kamera</th>
-                                                <th>Harga Sewa</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($kamera ?? '' as $in=> $val)
-                                            <tr>
-                                                <td>{{($in+1)}}</td>
-                                                <td>{{$val->nama_kamera}}</td>
-                                                <td>{{$val->seri_kamera}}</td>
-                                                <td>{{$val->harga_sewa}}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    {{$kamera ?? ''->links()}}
-                                </div>
-                            </div>
-                        </div>
-
+                       
 
 
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kamera;
 use Illuminate\Http\Request;
 
 class KameraController extends Controller
@@ -13,7 +14,9 @@ class KameraController extends Controller
      */
     public function index()
     {   
-        return view('admin.beranda');
+        
+        $kamera=Kamera::paginate(5);
+        return view('admin.beranda',compact('kamera'));
         //
     }
 
@@ -24,7 +27,10 @@ class KameraController extends Controller
      */
     public function create()
     {
-        //
+        
+        $title= 'Input Kamera';
+        return view('admin.inputkamera',compact('title'));
+       
     }
 
     /**
