@@ -12,15 +12,15 @@
     <title>Sewa Kamera Online</title>
 
     <!-- Custom fonts for this template-->
-    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../assets/css/sb-admin-2.min.css" rel="stylesheet">
 
-    <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -340,68 +340,55 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Menu Utama</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Tambah Data</h1>
                     </div>
 
                     <!-- Content Row -->
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-6 col-md-6 mb-1">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Nama</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">Gede Budi Setiawan
-                                                </div>
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    NIM</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">1815051083</div>
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Program Studi</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">Pendidikan Teknik
-                                                    Informatika</div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-person-booth fa-2x text-gray-300"></i>
-                                            </div>
+                    <div class="content">
+                        <div class="panel panel-flat border-top-lg border-top-primary">
+                            <form action="{{(isset($kamera))?route('kamera.update',$kamera-> id):route('kamera.store')}}" method="POST">
+                                @csrf
+                                @if(isset($kamera))?@method('PUT')@endif
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-4">ID Kamera</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" value="{{(isset($kamera))?$kamera->id:old('id')}}" name="id" class="form-control">
+                                            @error('id')<small style="color:red">{{$message}}</small>@enderror
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-4">Nama Kamera</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" value="{{(isset($kamera))?$kamera->nama_kamera:old('nama_kamera')}}" name="nama_kamera" class="form-control">
+                                            @error('nama_kamera')<small style="color:red">{{$message}}</small>@enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-4">Seri Kamera</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" value="{{(isset($kamera))?$kamera->seri_kamera:old('seri_kamera')}}" name="seri_kamera" class="form-control">
+                                            @error('seri_kamera')<small style="color:red">{{$message}}</small>@enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-4">Harga Sewa</label>
+                                        <div class="col-lg-6">
+                                            <input type="text" value="{{(isset($kamera))?$kamera->harga_sewa:old('harga_sewa')}}"  name="harga_sewa" class="form-control">
+                                            @error('harga_sewa')<small style="color:red">{{$message}}</small>@enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success">Simpan Data</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
+                            
 
-                            <div class="col-xl-6 col-md-6 mb-1">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Judul Studi Kasus</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">Sistem Penyewaan
-                                                    Kamera Online</div>
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Deskripsi Singkat</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">Sistem ini
-                                                    memungkinkan pengguna untuk menyewa kamera secara online</div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-business-time fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="col-lg-12">
-
-                       
-
 
                     </div>
+
                     <!-- Content Row -->
 
 
@@ -416,15 +403,13 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2019</span>
+                        <span>Copyright &copy; Budi Setiawan 2020</span>
                     </div>
                 </div>
             </footer>
             <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
 
@@ -454,22 +439,23 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="assets/js/sb-admin-2.min.js"></script>
+    <script src="../../assets/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="assets/vendor/chart.js/Chart.min.js"></script>
+    <script src="../../assets/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="assets/js/demo/chart-area-demo.js"></script>
-    <script src="assets/js/demo/chart-pie-demo.js"></script>
+    <script src="../../assets/js/demo/chart-area-demo.js"></script>
+    <script src="../../assets/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
-</html>
+</html> 
+

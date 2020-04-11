@@ -404,23 +404,32 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <a href="{{route('kamera.create')}}">Tambah Data</a>
+                                    <a href="{{route('kamera.create')}}"> <button type="submit" class="btn btn-primary">Tambah Data</button></a>
                                     <table class="table table-bordered" id="dataTable">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
+                                                <th>ID Kamera</th>
                                                 <th>Nama Kamera</th>
                                                 <th>Seri Kamera</th>
                                                 <th>Harga Sewa</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($kamera ?? '' as $in=> $val)
                                             <tr>
-                                                <td>{{($in+1)}}</td>
+                                                <td>{{($val->id)}}</td>
                                                 <td>{{$val->nama_kamera}}</td>
                                                 <td>{{$val->seri_kamera}}</td>
                                                 <td>{{$val->harga_sewa}}</td>
+                                                <td><a href="{{route('kamera.edit',$val->id)}}">
+                                                    <button type="submit" class="btn btn-outline-info"> Update</button></a>
+                                                    <form action="{{route('kamera.destroy',$val->id)}}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -447,7 +456,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2019</span>
+                        <span>Copyright &copy; Budi Setiawan 2020</span>
                     </div>
                 </div>
             </footer>

@@ -29,7 +29,7 @@ class KameraController extends Controller
     {
         
         $title= 'Input Kamera';
-        return view('admin.inputkamera',compact('title'));
+        return view('admin.inputkamera');
        
     }
 
@@ -41,7 +41,20 @@ class KameraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $messages = [
+            'required' => 'Kolom :attribute harus diisi',
+            'required' => 'Kolom :attribute harus diisi',
+            'required' => 'Kolom :attribute harus diisi',
+            'required' => 'Kolom :attribute harus diisi'
+        ];
+        $validasi = $request->validate([
+            'id' => 'required',
+            'nama_kamera' => 'required',
+            'seri_kamera' => 'required',
+            'harga_sewa' => 'required'
+        ],$messages);
+        $kamera=Kamera::create($validasi);
+        return redirect('kamera')->with('success','Data berhasil diupdate');
     }
 
     /**
@@ -63,7 +76,9 @@ class KameraController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title= 'Input Kamera';
+        $kamera =Kamera::find($id);
+        return view('admin.inputkamera', compact('kamera'));
     }
 
     /**
@@ -75,7 +90,20 @@ class KameraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $messages = [
+            'required' => 'Kolom :attribute harus diisi',
+            'required' => 'Kolom :attribute harus diisi',
+            'required' => 'Kolom :attribute harus diisi',
+            'required' => 'Kolom :attribute harus diisi'
+        ];
+        $validasi = $request->validate([
+            'id' => 'required',
+            'nama_kamera' => 'required',
+            'seri_kamera' => 'required',
+            'harga_sewa' => 'required'
+        ],$messages);
+        $kamera=Kamera::whereid($id)->update($validasi);
+        return redirect('kamera')->with('success','Data berhasil diupdate');
     }
 
     /**
@@ -86,6 +114,7 @@ class KameraController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Kamera::whereid($id)->delete();
+        return redirect('kamera')->with('success','Data berhasil diupdate');
     }
 }
