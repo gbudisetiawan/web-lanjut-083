@@ -19,4 +19,9 @@ Route::get('/', function () {
 
 /*Route ::get('/kamera', 'KameraController@index');*/
 
-Route ::resource ('kamera','KameraController');
+Route ::resource ('karyawan','KaryawanController');
+
+Auth::routes();
+
+Route::get('/home', 'KaryawanController@index')->name('home');
+

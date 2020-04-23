@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Kamera;
+use App\Karyawan;
 use Illuminate\Http\Request;
 
-class KameraController extends Controller
+class KaryawanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +19,8 @@ class KameraController extends Controller
     public function index()
     {   
         
-        $kamera=Kamera::paginate(5);
-        return view('admin.beranda',compact('kamera'));
+        $karyawan=Karyawan::paginate(5);
+        return view('admin.beranda',compact('karyawan'));
         //
     }
 
@@ -28,8 +32,8 @@ class KameraController extends Controller
     public function create()
     {
         
-        $title= 'Input Kamera';
-        return view('admin.inputkamera');
+        $title= 'Input karyawan';
+        return view('admin.inputkaryawan');
        
     }
 
@@ -49,12 +53,12 @@ class KameraController extends Controller
         ];
         $validasi = $request->validate([
             'id' => 'required',
-            'nama_kamera' => 'required',
-            'seri_kamera' => 'required',
-            'harga_sewa' => 'required'
+            'nama_karyawan' => 'required',
+            'alamat' => 'required',
+            'no_hp' => 'required'
         ],$messages);
-        $kamera=Kamera::create($validasi);
-        return redirect('kamera')->with('success','Data berhasil diupdate');
+        $karyawan=Karyawan::create($validasi);
+        return redirect('karyawan')->with('success','Data berhasil diupdate');
     }
 
     /**
@@ -76,9 +80,9 @@ class KameraController extends Controller
      */
     public function edit($id)
     {
-        $title= 'Input Kamera';
-        $kamera =Kamera::find($id);
-        return view('admin.inputkamera', compact('kamera'));
+        $title= 'Input karyawan';
+        $karyawan =Karyawan::find($id);
+        return view('admin.inputkaryawan', compact('karyawan'));
     }
 
     /**
@@ -98,12 +102,12 @@ class KameraController extends Controller
         ];
         $validasi = $request->validate([
             'id' => 'required',
-            'nama_kamera' => 'required',
-            'seri_kamera' => 'required',
-            'harga_sewa' => 'required'
+            'nama_karyawan' => 'required',
+            'alamat' => 'required',
+            'no_hp' => 'required'
         ],$messages);
-        $kamera=Kamera::whereid($id)->update($validasi);
-        return redirect('kamera')->with('success','Data berhasil diupdate');
+        $karyawan=Karyawan::whereid($id)->update($validasi);
+        return redirect('karyawan')->with('success','Data berhasil diupdate');
     }
 
     /**
@@ -114,7 +118,7 @@ class KameraController extends Controller
      */
     public function destroy($id)
     {
-        Kamera::whereid($id)->delete();
-        return redirect('kamera')->with('success','Data berhasil diupdate');
+        Karyawan::whereid($id)->delete();
+        return redirect('karyawan')->with('success','Data berhasil diupdate');
     }
 }

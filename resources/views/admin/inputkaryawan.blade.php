@@ -63,7 +63,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Daftar</span>
+                    <span>Tabel Kamera</span>
                 </a>
             </li>
 
@@ -72,7 +72,7 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Update Data</span>
+                    <span>Tabel Karyawan</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
@@ -346,36 +346,36 @@
                     <!-- Content Row -->
                     <div class="content">
                         <div class="panel panel-flat border-top-lg border-top-primary">
-                            <form action="{{(isset($kamera))?route('kamera.update',$kamera-> id):route('kamera.store')}}" method="POST">
+                            <form action="{{(isset($karyawan))?route('karyawan.update',$karyawan-> id):route('karyawan.store')}}" method="POST">
                                 @csrf
-                                @if(isset($kamera))?@method('PUT')@endif
+                                @if(isset($karyawan))?@method('PUT')@endif
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label class="control-label col-lg-4">ID Kamera</label>
+                                        <label class="control-label col-lg-4">ID Karyawan</label>
                                         <div class="col-lg-6">
-                                            <input type="text" value="{{(isset($kamera))?$kamera->id:old('id')}}" name="id" class="form-control">
+                                            <input type="text" value="{{(isset($karyawan))?$karyawan->id:old('id')}}" name="id" class="form-control">
                                             @error('id')<small style="color:red">{{$message}}</small>@enderror
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-lg-4">Nama Kamera</label>
+                                        <label class="control-label col-lg-4">Nama Karyawan</label>
                                         <div class="col-lg-6">
-                                            <input type="text" value="{{(isset($kamera))?$kamera->nama_kamera:old('nama_kamera')}}" name="nama_kamera" class="form-control">
-                                            @error('nama_kamera')<small style="color:red">{{$message}}</small>@enderror
+                                            <input type="text" value="{{(isset($karyawan))?$karyawan->nama_karyawan:old('nama_karyawan')}}" name="nama_karyawan" class="form-control">
+                                            @error('nama_karyawan')<small style="color:red">{{$message}}</small>@enderror
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-lg-4">Seri Kamera</label>
+                                        <label class="control-label col-lg-4">Alamat</label>
                                         <div class="col-lg-6">
-                                            <input type="text" value="{{(isset($kamera))?$kamera->seri_kamera:old('seri_kamera')}}" name="seri_kamera" class="form-control">
-                                            @error('seri_kamera')<small style="color:red">{{$message}}</small>@enderror
+                                            <input type="text" value="{{(isset($karyawan))?$karyawan->alamat:old('alamat')}}" name="alamat" class="form-control">
+                                            @error('alamat')<small style="color:red">{{$message}}</small>@enderror
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-lg-4">Harga Sewa</label>
+                                        <label class="control-label col-lg-4">No.HP</label>
                                         <div class="col-lg-6">
-                                            <input type="text" value="{{(isset($kamera))?$kamera->harga_sewa:old('harga_sewa')}}"  name="harga_sewa" class="form-control">
-                                            @error('harga_sewa')<small style="color:red">{{$message}}</small>@enderror
+                                            <input type="text" value="{{(isset($karyawan))?$karyawan->no_hp:old('no_hp')}}"  name="no_hp" class="form-control">
+                                            @error('no_hp')<small style="color:red">{{$message}}</small>@enderror
                                         </div>
                                     </div>
                                     <div class="form-group">
